@@ -84,8 +84,8 @@ class SSD(nn.Module):
             confidences.append(confidence)
             locations.append(location)
 
-        confidences = torch.cat(confidences, 1)
-        locations = torch.cat(locations, 1)
+        confidences = torch.cat(confidences, 1).to(self.device)
+        locations = torch.cat(locations, 1).to(self.device)
         
         if self.is_test:
             confidences = F.softmax(confidences, dim=2)
